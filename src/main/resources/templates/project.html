@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<script>
+    var companyData = [
+        {name:"مانیزی",userName:"u-moneasy",ip:"10.5.18.34",phone:"0218824266",description:""},
+        {name:"بیمه",userName:"u-insurance",ip:"192.158.20.64",phone:"0214444552",description:""},
+        {name:"خدمات انفورماتیک",userName:"u-isc",ip:"192.158.20.64,10.5.18.34",phone:"0218870000",description:""},
+    ]
+    isc.VLayout.create({
+        showEdges:true,
+        height:"100%",
+        width:"100%",
+        membersMargin:5,  layoutMargin:10,
+        members:[
+            isc.Label.create({
+                ID: "companyLabel",
+                contents: "لیست شرکت ها",
+                width: "100%",
+                height: "10%",
+                align: "center",
+                showShadow: true,
+            }),
+            isc.ListGrid.create({
+                ID: "contentsGrid",
+                width: "100%",
+                height: "90%",
+                alternateRecordStyles: true,
+                showResizeBar: true,
+                data: companyData,
+                fields: [
+                    {name: "name", title: "نام"},
+                    {name: "userName", title: "نام کاربری"},
+                    {name: "ip", title: "ip"},
+                    {name: "phone", title: "شماره تماس"},
+                    {name: "description", title: "توضیحات"},
+                ],
+                canReorderFields: true
+            })
+        ]
+    })
+
+</script>
+</body>
+</html>
