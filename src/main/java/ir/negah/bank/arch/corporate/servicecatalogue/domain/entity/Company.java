@@ -13,26 +13,25 @@ import java.util.*;
 
 @Data
 @Entity
-@Table(name = "ENDPOINT")
-public class Endpoint {
+@Table(name = "COMPANY")
+public class Company {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endpoint_s")
-    @SequenceGenerator(sequenceName = "endpoint_s", allocationSize = 1, name = "endpoint_s")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "company_s")
+    @SequenceGenerator(sequenceName = "company_s", allocationSize = 1, name = "company_s")
     @Column(name = "SEQ_NO")
     private Long id;
 
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "COMPANY_ID")
-    private Set<Company> companies;
+    @Column(name = "USER_NAME")
+    private String userName;
 
-    @Column(name = "URL", nullable = false)
-    private String url;
+    @Column(name = "IP")
+    private String ip;
 
-    @Column(name = "CURL", nullable = false)
-    private String curl;
+    @Column(name = "PHONE")
+    private String phone;
 
     @Column(name = "DESCRIPTION")
     private String description;

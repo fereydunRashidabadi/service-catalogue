@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<script>
+    isc.ToolStrip.create({
+        ID: "endpointGridEditControls",
+        width: "100%", height:24,
+        members: [
+            isc.ToolStripButton.create({
+                icon: "[SKIN]/actions/add.png",
+                prompt: "افزودن رکورد جدید",
+                click: function () {
+                    var record = countryList.getSelectedRecord();
+                    if (record == null) return;
+                    countryList.startEditing(countryList.data.indexOf(record));
+                }
+            }),
+            isc.ToolStripButton.create({
+                icon: "[SKIN]/actions/edit.png",
+                prompt: "ویرایش رکورد انتخاب شده",
+                click: function () {
+                    var record = countryList.getSelectedRecord();
+                    if (record == null) return;
+                    countryList.startEditing(countryList.data.indexOf(record));
+                }
+            }),
+            isc.ToolStripButton.create({
+                icon: "[SKIN]/actions/remove.png",
+                prompt: "حذف رکورد انتخاب شده",
+                click: "countryList.removeSelectedData()"
+            }),
+            isc.LayoutSpacer.create({ width:"*" })
+        ]
+    });
+    var endpointData ;
+    isc.VLayout.create({
+        ID:"endpointLayout",
+        showEdges:false,
+        height:"100%",
+        width:"100%",
+        membersMargin:5,  layoutMargin:10,
+        members:[
+            isc.Label.create({
+                ID: "endpointLabel",
+                contents: "لیست سرویس ها",
+                width: "100%",
+                height: "10%",
+                align: "center",
+                showShadow: true,
+            }),
+            isc.ListGrid.create({
+                ID: "endpointGrid",
+                width: "100%",
+                height: "90%",
+                gridComponents:["header", "filterEditor", "body", endpointGridEditControls],
+                alternateRecordStyles: true,
+                showResizeBar: true,
+                canDragSelectText:true,
+                showFilterEditor: false,
+                showRollOver:false,
+                wrapCells: true,
+                fixedRecordHeights: false,
+                fields: [
+                    {name: "name", title: "نام"},
+                    {name: "url", title: "آدرس"},
+                    {name: "curl", title: "curl"},
+                    {name: "description", title: "توضیحات"},
+                ],
+                canReorderFields: true
+            })
+        ]
+    });
+    isc.RPCManager.sendRequest({
+        actionURL: "http://localhost:4100/endpoints",
+        httpMethod: "GET",
+        callback: function (data, response) {
+            // alert(response)
+            endpointData= JSON.parse(response);
+            endpointGrid.setData(endpointData);
+            endpointGrid.fetchData();
+
+        }
+    });
+
+</script>
+</body>
+</html>

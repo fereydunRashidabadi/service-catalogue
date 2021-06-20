@@ -9,8 +9,9 @@
     <SCRIPT SRC=/isomorphic/system/modules/ISC_Forms.js></SCRIPT>
     <SCRIPT SRC=/isomorphic/system/modules/ISC_DataBinding.js></SCRIPT>
     <SCRIPT SRC=/isomorphic/skins/Tahoe/load_skin.js></SCRIPT>
+    <SCRIPT SRC=/js/common.js></SCRIPT>
     <!--    <link rel="stylesheet" type="text/css" href="/isomorphic/skins/Tahoe/skin_styles.css?isc_version=v12.1p_2021-06-18"/>-->
-    <title>Title</title>
+    <title>سرویس کاتالوگ</title>
 </head>
 <body dir="rtl">
 <script>
@@ -47,7 +48,7 @@
 
     isc.VLayout.create({
         ID: "mainVLayout",
-        showEdges: true,
+        showEdges: false,
         width: "100%",
         height: "100%",
         membersMargin:5,  layoutMargin:10,
@@ -62,7 +63,7 @@
                 width: "100%",
                 height: "100%",
                 // styleName:"exampleTextBlock",
-                contentsURL:""
+                contentsURL:"/welcome",
             })
         ]
     })
@@ -76,9 +77,13 @@
         controls: [
             // getIconMenuButton("New", { orientation: "vertical", menu: typeMenu, showMenuIconOver: false }),
             getIconButton("شرکت ها", { orientation: "vertical", largeIcon: "/images/company.png", click:function () {
-                    mainHtmlFlow.setContentsURL("/company")
+                    destroyOldObject();
+                    mainHtmlFlow.setContentsURL("/company");
                 } }),
-            getIconButton("پروژه ها", { orientation: "vertical", largeIcon: "/images/project.jpg" }),
+            getIconButton("پروژه ها", { orientation: "vertical", largeIcon: "/images/project.jpg", click:function () {
+                    destroyOldObject();
+                    mainHtmlFlow.setContentsURL("/project")
+                } }),
             // getIconMenuButton("Save As", { orientation: "vertical", menu: typeMenu, largeIcon: "pieces/48/pawn_red.png" })
         ],
         autoDraw: false
@@ -91,7 +96,10 @@
         titleAlign: "left",
         controls: [
             // getIconMenuButton("New", { orientation: "vertical", menu: typeMenu, showMenuIconOver: false }),
-            getIconButton("سرویس ها", { orientation: "vertical", largeIcon: "/images/api.jpg" }),
+            getIconButton("سرویس ها", { orientation: "vertical", largeIcon: "/images/api.jpg", click:function () {
+                    destroyOldObject();
+                    mainHtmlFlow.setContentsURL("/endpoint")
+                } }),
             getIconButton("گزارشات", { orientation: "vertical", largeIcon: "/images/chart.png" }),
             // getIconMenuButton("Save As", { orientation: "vertical", menu: typeMenu, largeIcon: "pieces/48/pawn_red.png" })
         ],

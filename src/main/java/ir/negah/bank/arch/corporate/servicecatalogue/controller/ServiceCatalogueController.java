@@ -19,9 +19,23 @@ public class ServiceCatalogueController {
     public String index(Model model) {
         return "index-new";
     }
+    @GetMapping("/welcome")
+    public String welcome(Model model) {
+        return "welcome";
+    }
 
     @GetMapping("/company")
     public String company(Model model) {
         return "company";
+    }
+
+    @GetMapping("/project")
+    public String project(Model model) {
+        return "project";
+    }
+
+    @GetMapping("/endpoint")
+    public String endpoint(Model model) {
+        return "endpoint";
     }
 }
