@@ -50,4 +50,14 @@ public class EndpointService {
         }
         return null;
     }
+
+    public String saveEndpoint(Endpoint endpoint){
+        endpointRepository.save(endpoint);
+        return getAllEndpoints();
+    }
+
+    public String deleteEndpointById(Long id){
+        endpointRepository.deleteById(id);
+        return getAllEndpoints();
+    }
 }

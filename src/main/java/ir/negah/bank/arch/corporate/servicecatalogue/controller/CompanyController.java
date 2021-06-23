@@ -26,8 +26,18 @@ public class CompanyController {
         return ResponseEntity.status(HttpStatus.OK).body(companyService.getAllCompanies());
     }
 
-    @PostMapping("save")
-    public ResponseEntity<String> saveCompanies(@RequestBody Company company) {
+    @PostMapping("add")
+    public ResponseEntity<String> saveCompany(@RequestBody Company company) {
         return ResponseEntity.status(HttpStatus.OK).body(companyService.addCompany(company));
+    }
+
+    @PostMapping("edit")
+    public ResponseEntity<String> editCompany(@RequestBody Company company) {
+        return ResponseEntity.status(HttpStatus.OK).body(companyService.addCompany(company));
+    }
+
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<String> deleteCompany(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(companyService.deleteCompany(id));
     }
 }

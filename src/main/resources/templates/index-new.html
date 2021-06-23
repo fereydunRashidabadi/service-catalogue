@@ -8,25 +8,13 @@
     <SCRIPT SRC=/isomorphic/system/modules/ISC_Grids.js></SCRIPT>
     <SCRIPT SRC=/isomorphic/system/modules/ISC_Forms.js></SCRIPT>
     <SCRIPT SRC=/isomorphic/system/modules/ISC_DataBinding.js></SCRIPT>
-    <SCRIPT SRC=/isomorphic/skins/Tahoe/load_skin.js></SCRIPT>
+    <SCRIPT SRC=/isomorphic/skins/Nicico/load_skin.js></SCRIPT>
     <SCRIPT SRC=/js/common.js></SCRIPT>
     <!--    <link rel="stylesheet" type="text/css" href="/isomorphic/skins/Tahoe/skin_styles.css?isc_version=v12.1p_2021-06-18"/>-->
     <title>سرویس کاتالوگ</title>
 </head>
 <body dir="rtl">
 <script>
-    var typeMenu = {
-        _constructor: "Menu",
-        autoDraw: false,
-        showShadow: true,
-        shadowDepth: 10,
-        data: [
-            {title: "Document", keyTitle: "Ctrl+D", icon: "icons/16/document_plain_new.png"},
-            {title: "Picture", keyTitle: "Ctrl+P", icon: "icons/16/folder_out.png"},
-            {title: "Email", keyTitle: "Ctrl+E", icon: "icons/16/disk_blue.png"}
-        ]
-    };
-
     function getIconButton (title, props) {
         return isc.IconButton.create(isc.addProperties({
                 title: title,

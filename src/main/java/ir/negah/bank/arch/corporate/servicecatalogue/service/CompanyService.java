@@ -41,4 +41,9 @@ public class CompanyService {
         companyRepository.save(company);
         return getAllCompanies();
     }
+
+    public String deleteCompany(Long id){
+        companyRepository.deleteById(id);
+        return getAllCompanies();
+    }
 }

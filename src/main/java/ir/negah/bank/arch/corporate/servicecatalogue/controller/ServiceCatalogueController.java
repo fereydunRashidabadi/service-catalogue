@@ -1,6 +1,8 @@
 package ir.negah.bank.arch.corporate.servicecatalogue.controller;
 
+import io.swagger.annotations.*;
 import ir.negah.bank.arch.corporate.servicecatalogue.domain.dto.*;
+import ir.negah.bank.arch.util.pojo.*;
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;

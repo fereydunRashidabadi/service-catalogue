@@ -34,6 +34,12 @@ public class Endpoint {
     @Column(name = "CURL", nullable = false)
     private String curl;
 
+    @Column(name = "TEST_ENV")
+    private Boolean testEnv;
+
+    @Column(name = "PROD_ENV")
+    private Boolean prodEnv;
+
     @Column(name = "DESCRIPTION")
     private String description;
 

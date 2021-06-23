@@ -36,4 +36,15 @@ public class ProjectService {
         }
         return null;
     }
+
+    public String saveProject(Project project){
+        projectRepository.save(project);
+        return getAllProjects();
+    }
+
+
+    public String deleteProjectById(Long projectId){
+        projectRepository.deleteById(projectId);
+        return getAllProjects();
+    }
 }
