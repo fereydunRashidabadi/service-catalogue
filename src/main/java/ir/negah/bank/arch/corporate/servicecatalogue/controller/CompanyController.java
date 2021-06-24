@@ -40,4 +40,9 @@ public class CompanyController {
     public ResponseEntity<String> deleteCompany(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(companyService.deleteCompany(id));
     }
+
+    @GetMapping("by-endpoint")
+    public ResponseEntity<String> getAllCompaniesByEndpoint(@RequestParam("endpointId") Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(companyService.getAllCompaniesByEndpoint(id));
+    }
 }

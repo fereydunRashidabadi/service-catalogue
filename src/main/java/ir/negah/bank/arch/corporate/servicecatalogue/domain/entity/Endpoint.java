@@ -1,8 +1,10 @@
 package ir.negah.bank.arch.corporate.servicecatalogue.domain.entity;
 
+import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -11,10 +13,11 @@ import java.util.*;
  * inside the package - ir.negah.bank.arch.corporate.servicecatalogue.domain.entity
  **/
 
-@Data
+@Setter
+@Getter
 @Entity
 @Table(name = "ENDPOINT")
-public class Endpoint {
+public class Endpoint implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endpoint_s")
     @SequenceGenerator(sequenceName = "endpoint_s", allocationSize = 1, name = "endpoint_s")
@@ -24,9 +27,9 @@ public class Endpoint {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+/*    @ManyToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "COMPANY_ID")
-    private Set<Company> companies;
+    private List<Company> companies;*/
 
     @Column(name = "URL", nullable = false)
     private String url;
@@ -42,5 +45,13 @@ public class Endpoint {
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+    @JsonBackReference
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinTable(name = "COMPANY_ENDPOINT",
+//            joinColumns = { @JoinColumn(name = "ENDPOINT_ID") },
+//            inverseJoinColumns = { @JoinColumn(name = "COMPANY_ID") })
+    private List<Company> companies = new ArrayList<Company>();
+
 
 }

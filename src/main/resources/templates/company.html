@@ -4,7 +4,7 @@
 </head>
 <body>
 <script>
-    function getRequestForm(type, path) {
+    function getCompanyRequestForm(type, path) {
         var companyFormWindow = isc.Window.create({
             isModal: true,
             showModalMask: true,
@@ -82,7 +82,7 @@
                 icon: "[SKIN]/actions/add.png",
                 prompt: "افزودن رکورد جدید",
                 click: function () {
-                    getRequestForm("ایجاد", addCompany)
+                    getCompanyRequestForm("ایجاد", addCompany)
                 }
             }),
             isc.ToolStripButton.create({
@@ -91,7 +91,7 @@
                 click: function () {
                     var record = companyGrid.getSelectedRecord();
                     if (record == null) return;
-                    getRequestForm("edit", editCompany)
+                    getCompanyRequestForm("edit", editCompany)
                 }
             }),
             isc.ToolStripButton.create({

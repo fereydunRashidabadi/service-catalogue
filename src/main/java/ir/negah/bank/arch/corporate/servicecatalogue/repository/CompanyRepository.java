@@ -4,6 +4,8 @@ import ir.negah.bank.arch.corporate.servicecatalogue.domain.entity.*;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.*;
 
+import java.util.*;
+
 /**
  * created by  f.rashidabadi
  * created on 6/19/2021
@@ -12,4 +14,5 @@ import org.springframework.stereotype.*;
 
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
+    public List<Company> findByEndpoints(Endpoint endpoint);
 }

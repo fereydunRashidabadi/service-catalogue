@@ -1,8 +1,10 @@
 package ir.negah.bank.arch.corporate.servicecatalogue.domain.entity;
 
+import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -11,10 +13,11 @@ import java.util.*;
  * inside the package - ir.negah.bank.arch.corporate.servicecatalogue.domain.entity
  **/
 
-@Data
+@Setter
+@Getter
 @Entity
 @Table(name = "COMPANY")
-public class Company {
+public class Company implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "company_s")
     @SequenceGenerator(sequenceName = "company_s", allocationSize = 1, name = "company_s")
@@ -35,5 +38,10 @@ public class Company {
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+//    @JsonManagedReference
+    @ManyToMany(mappedBy="companies", fetch = FetchType.LAZY)
+    private List<Endpoint> endpoints = new ArrayList<Endpoint>();
+
 
 }

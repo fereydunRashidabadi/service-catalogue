@@ -3,6 +3,7 @@ package ir.negah.bank.arch.corporate.servicecatalogue.domain.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.*;
 
 /**
  * created by  f.rashidabadi
@@ -10,10 +11,11 @@ import javax.persistence.*;
  * inside the package - ir.negah.bank.arch.corporate.servicecatalogue.domain.entity
  **/
 
-@Data
+@Setter
+@Getter
 @Entity
 @Table(name = "PROJECT")
-public class Project {
+public class Project implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_s")
     @SequenceGenerator(sequenceName = "project_s", allocationSize = 1, name = "project_s")

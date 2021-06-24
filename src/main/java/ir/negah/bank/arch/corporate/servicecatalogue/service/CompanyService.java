@@ -12,38 +12,52 @@ import org.springframework.transaction.annotation.*;
 import java.util.*;
 
 /**
- * created by  f.rashidabadi
- * created on 6/19/2021
- * inside the package - ir.negah.bank.arch.corporate.servicecatalogue.service
- **/
-
+ * created by f.rashidabadi created on 6/19/2021 inside the package -
+ * ir.negah.bank.arch.corporate.servicecatalogue.service
+ */
 @Service
 @Transactional
 @Slf4j
 public class CompanyService {
-    @Autowired
-    private CompanyRepository companyRepository;
+  @Autowired private CompanyRepository companyRepository;
 
-    @Autowired
-    ObjectMapper objectMapper;
+  @Autowired ObjectMapper objectMapper;
 
-    public String getAllCompanies(){
-        try {
-            List<Company> companies = companyRepository.findAll();
-            return objectMapper.writeValueAsString(companies);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return null;
+  public String getAllCompanies() {
+    try {
+      List<Company> companies = companyRepository.findAll();
+      return objectMapper.writeValueAsString(companies);
+    } catch (JsonProcessingException e) {
+      e.printStackTrace();
     }
+    return null;
+  }
 
-    public String addCompany(Company company){
-        companyRepository.save(company);
-        return getAllCompanies();
-    }
+  public String addCompany(Company company) {
+    companyRepository.save(company);
+    return getAllCompanies();
+  }
 
-    public String deleteCompany(Long id){
-        companyRepository.deleteById(id);
-        return getAllCompanies();
+  public String deleteCompany(Long id) {
+    companyRepository.deleteById(id);
+    return getAllCompanies();
+  }
+
+  public String getAllCompaniesByEndpoint(Long id) {
+    try {
+      Endpoint endpoint = new Endpoint();
+      endpoint.setId(id);
+
+      List<Company> companies = companyRepository.findByEndpoints(endpoint);
+
+      return objectMapper.writeValueAsString(companies);
+    } catch (JsonProcessingException e) {
+      e.printStackTrace();
     }
+    return null;
+  }
+
+  public Company getOne(Long id) {
+    return companyRepository.getOne(id);
+  }
 }
