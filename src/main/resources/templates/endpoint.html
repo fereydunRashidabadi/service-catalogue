@@ -7,6 +7,16 @@
     var endpointData;
 
     function getEndpointRequestForm(type, path) {
+        var projectMap = {};
+        isc.RPCManager.sendRequest({
+            actionURL: baseUrl + allProject,
+            httpMethod: "GET",
+            callback: function (data, response) {
+                for (const val of JSON.parse(response)) {
+                    projectMap[val.id] = val.name;
+                }
+            }
+        });
         var endpointFormWindow = isc.Window.create({
             isModal: true,
             showModalMask: true,
@@ -20,12 +30,14 @@
                     ID: "endpointForm",
                     numCols: 2,
                     fields: [
-                        {name: "name", title: "نام"},
-                        {name: "url", title: "آدرس"},
-                        {name: "curl", title: "curl", type: "textArea", height: "200"},
+                        {name: "name", title: "نام", required: true},
+                        {name: "url", title: "آدرس", required: true},
+                        {name: "curl", title: "curl", required: true, type: "textArea", height: "200"},
+                        {name: "project", title: "پروژه", required: true, type: "select",
+                            valueMap: projectMap},
                         {name: "testEnv", title: "محیط تستی", type: "boolean"},
                         {name: "prodEnv", title: "محیط عملیاتی", type: "boolean"},
-                        {name: "description", title: "توضیحات"}
+                        {name: "description", title: "توضیحات",type: "textArea", height: "100"}
                     ]
                 }),
                 isc.HStack.create({
@@ -130,14 +142,7 @@
         width: "100%",
         membersMargin: 5, layoutMargin: 10,
         members: [
-            isc.Label.create({
-                ID: "endpointLabel",
-                contents: "لیست سرویس ها",
-                width: "100%",
-                height: "10%",
-                align: "center",
-                showShadow: true,
-            }),
+            getLabel("لیست سرویس ها","#aaff91"),
             isc.ListGrid.create({
                 ID: "endpointGrid",
                 width: "100%",
@@ -152,6 +157,7 @@
                     {name: "name", title: "نام"},
                     {name: "url", title: "آدرس"},
                     {name: "curl", title: "curl"},
+                    {name: "project", title: "پروژه"},
                     {name: "testEnv", title: "محیط تستی", type: "boolean", width: "100"},
                     {name: "prodEnv", title: "محیط عملیاتی", type: "boolean", width: "100"},
                     {name: "description", title: "توضیحات"},
@@ -251,7 +257,10 @@
                                             data: JSON.stringify(endpointObj),
                                             callback: function (data, response) {
                                                 companyFormWindow.close();
-                                                setCompaniesByEndpointToCompanyGrid(record.id)
+                                                companyData = JSON.parse(response);
+                                                companyGrid.setData(companyData);
+                                                companyGrid.fetchData();
+                                                // setCompaniesByEndpointToCompanyGrid(record.id)
                                                 isc.say("درخواست با موفقیت انجام شد.")
                                             }
                                         })

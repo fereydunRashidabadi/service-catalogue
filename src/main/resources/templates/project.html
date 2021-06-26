@@ -126,14 +126,7 @@
         width:"100%",
         membersMargin:5,  layoutMargin:10,
         members:[
-            isc.Label.create({
-                ID: "projectLabel",
-                contents: "لیست پروژه ها",
-                width: "100%",
-                height: "10%",
-                align: "center",
-                showShadow: true,
-            }),
+            getLabel("لیست پروژه ها","#ffd491"),
             isc.ListGrid.create({
                 ID: "projectGrid",
                 width: "100%",

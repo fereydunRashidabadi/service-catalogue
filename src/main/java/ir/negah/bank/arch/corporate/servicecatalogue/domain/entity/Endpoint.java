@@ -27,10 +27,6 @@ public class Endpoint implements Serializable {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-/*    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "COMPANY_ID")
-    private List<Company> companies;*/
-
     @Column(name = "URL", nullable = false)
     private String url;
 
@@ -52,6 +48,9 @@ public class Endpoint implements Serializable {
 //            joinColumns = { @JoinColumn(name = "ENDPOINT_ID") },
 //            inverseJoinColumns = { @JoinColumn(name = "COMPANY_ID") })
     private List<Company> companies = new ArrayList<Company>();
+
+    @ManyToOne
+    private Project project;
 
 
 }

@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.*;
+import java.util.*;
 
 /**
  * created by  f.rashidabadi
@@ -27,5 +28,8 @@ public class Project implements Serializable {
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Endpoint> endpoints;
 
 }
