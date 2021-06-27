@@ -28,6 +28,12 @@ public class EndpointController {
         .body(endpointService.getAllEndpointsByCompany(companyId));
   }
 
+  @GetMapping("by-project")
+  public ResponseEntity<String> endpointByProject(@RequestParam("projectId") Long projectId) {
+    return ResponseEntity.status(HttpStatus.OK)
+        .body(endpointService.getAllEndpointsByProject(projectId));
+  }
+
   @PostMapping("add")
   public ResponseEntity<String> addEndpoint(@RequestBody Endpoint endpoint) {
     return ResponseEntity.status(HttpStatus.OK).body(endpointService.saveEndpoint(endpoint));

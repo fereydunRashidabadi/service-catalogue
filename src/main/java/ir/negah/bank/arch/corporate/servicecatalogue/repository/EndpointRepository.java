@@ -17,4 +17,5 @@ import java.util.*;
 public interface EndpointRepository extends JpaRepository<Endpoint, Long> {
 
     Set<Endpoint> findByCompanies(Company company);
+    Set<Endpoint> findByProject(Project project);
 }

@@ -92,4 +92,16 @@ public class EndpointService {
     }
     return null;
   }
+
+  public String getAllEndpointsByProject(Long projectId) {
+    try {
+      Project project = new Project();
+      project.setId(projectId);
+      Set<Endpoint> endpoints = endpointRepository.findByProject(project);
+      return objectMapper.writeValueAsString(endpoints);
+    } catch (JsonProcessingException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 }

@@ -1,5 +1,6 @@
 package ir.negah.bank.arch.corporate.servicecatalogue.domain.entity;
 
+import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 
 import javax.persistence.*;
@@ -29,6 +30,7 @@ public class Project implements Serializable {
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "project",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Endpoint> endpoints;
 

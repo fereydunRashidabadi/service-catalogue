@@ -55,7 +55,11 @@
                             icon: "[SKIN]/actions/add.png",
                             iconOrientation: "right",
                             click: function () {
-                                if (endpointForm.validate())
+                                if (endpointForm.validate()) {
+                                    projectId=endpointForm.values.project;
+                                    requestObj = endpointForm.values;
+                                    requestObj.project={id:projectId}
+                                    // console.log(requestObj)
                                     isc.RPCManager.sendRequest({
                                         actionURL: baseUrl + path,
                                         httpMethod: "POST",
@@ -72,6 +76,7 @@
                                             isc.say("درخواست با موفقیت انجام شد.")
                                         }
                                     })
+                                }
                             }
                         })
                     ]
@@ -103,6 +108,7 @@
                 prompt: "ویرایش رکورد انتخاب شده",
                 click: function () {
                     var record = endpointGrid.getSelectedRecord();
+                    console.log(record)
                     if (record == null) return;
                     getEndpointRequestForm("edit", editEndpoint)
                 }
@@ -157,7 +163,7 @@
                     {name: "name", title: "نام"},
                     {name: "url", title: "آدرس"},
                     {name: "curl", title: "curl"},
-                    {name: "project", title: "پروژه"},
+                    {name: "project.name", title: "پروژه"},
                     {name: "testEnv", title: "محیط تستی", type: "boolean", width: "100"},
                     {name: "prodEnv", title: "محیط عملیاتی", type: "boolean", width: "100"},
                     {name: "description", title: "توضیحات"},
@@ -186,6 +192,7 @@
         httpMethod: "GET",
         callback: function (data, response) {
             endpointData = JSON.parse(response);
+            console.log(endpointData)
             endpointGrid.setData(endpointData);
             endpointGrid.fetchData();
 
