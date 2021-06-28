@@ -64,12 +64,12 @@ public class EndpointService {
   }
 
   public String addCompany(Endpoint req) {
-    try{
-    Optional<Endpoint> endpoint = endpointRepository.findById(req.getId());
-    Optional<Company> company = companyService.findById(req.getCompanies().get(0).getId());
-    endpoint.get().getCompanies().add(company.get());
-    return objectMapper.writeValueAsString(endpoint.get().getCompanies());
-    }catch (JsonProcessingException e){
+    try {
+      Optional<Endpoint> endpoint = endpointRepository.findById(req.getId());
+      Optional<Company> company = companyService.findById(req.getCompanies().get(0).getId());
+      endpoint.get().getCompanies().add(company.get());
+      return objectMapper.writeValueAsString(endpoint.get().getCompanies());
+    } catch (JsonProcessingException e) {
       e.printStackTrace();
     }
     return null;

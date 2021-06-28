@@ -8,30 +8,27 @@ import java.io.*;
 import java.util.*;
 
 /**
- * created by  f.rashidabadi
- * created on 6/19/2021
- * inside the package - ir.negah.bank.arch.corporate.servicecatalogue.domain.entity
- **/
-
+ * created by f.rashidabadi created on 6/19/2021 inside the package -
+ * ir.negah.bank.arch.corporate.servicecatalogue.domain.entity
+ */
 @Setter
 @Getter
 @Entity
 @Table(name = "PROJECT")
 public class Project implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_s")
-    @SequenceGenerator(sequenceName = "project_s", allocationSize = 1, name = "project_s")
-    @Column(name = "SEQ_NO")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_s")
+  @SequenceGenerator(sequenceName = "project_s", allocationSize = 1, name = "project_s")
+  @Column(name = "SEQ_NO")
+  private Long id;
 
-    @Column(name = "NAME", nullable = false)
-    private String name;
+  @Column(name = "NAME", nullable = false)
+  private String name;
 
-    @Column(name = "DESCRIPTION")
-    private String description;
+  @Column(name = "DESCRIPTION")
+  private String description;
 
-    @JsonBackReference
-    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Endpoint> endpoints;
-
+  @JsonBackReference
+  @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  private List<Endpoint> endpoints;
 }

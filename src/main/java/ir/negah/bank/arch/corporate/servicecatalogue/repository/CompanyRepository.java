@@ -7,12 +7,10 @@ import org.springframework.stereotype.*;
 import java.util.*;
 
 /**
- * created by  f.rashidabadi
- * created on 6/19/2021
- * inside the package - ir.negah.bank.arch.corporate.servicecatalogue.repository
- **/
-
+ * created by f.rashidabadi created on 6/19/2021 inside the package -
+ * ir.negah.bank.arch.corporate.servicecatalogue.repository
+ */
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
-    public List<Company> findByEndpoints(Endpoint endpoint);
+  public List<Company> findByEndpoints(Endpoint endpoint);
 }

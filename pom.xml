@@ -15,18 +15,6 @@
     <dependencies>
         <dependency>
             <groupId>ir.negah.bank.arch</groupId>
-            <artifactId>arch-util-aggregator</artifactId>
-            <version>1.2.1</version>
-            <type>pom</type>
-            <exclusions>
-                <exclusion>
-                    <groupId>ir.negah.bank.arch</groupId>
-                    <artifactId>arch-util-log</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>ir.negah.bank.arch</groupId>
             <artifactId>arch-web-starter</artifactId>
             <version>1.0.0</version>
             <type>pom</type>

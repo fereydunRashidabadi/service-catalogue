@@ -33,7 +33,7 @@
                         {name: "name", title: "نام", required: true},
                         {name: "url", title: "آدرس", required: true},
                         {name: "curl", title: "curl", required: true, type: "textArea", height: "200"},
-                        {name: "project", title: "پروژه", required: true, type: "select",
+                        {name: "project.id", title: "پروژه", required: true, type: "select",
                             valueMap: projectMap},
                         {name: "testEnv", title: "محیط تستی", type: "boolean"},
                         {name: "prodEnv", title: "محیط عملیاتی", type: "boolean"},
@@ -56,10 +56,10 @@
                             iconOrientation: "right",
                             click: function () {
                                 if (endpointForm.validate()) {
-                                    projectId=endpointForm.values.project;
-                                    requestObj = endpointForm.values;
-                                    requestObj.project={id:projectId}
-                                    // console.log(requestObj)
+                                    // projectId=endpointForm.values.project;
+                                    // requestObj = endpointForm.values;
+                                    // requestObj.project={id:projectId}
+                                    console.log(endpointForm.values)
                                     isc.RPCManager.sendRequest({
                                         actionURL: baseUrl + path,
                                         httpMethod: "POST",

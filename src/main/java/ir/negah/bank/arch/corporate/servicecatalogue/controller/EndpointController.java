@@ -50,9 +50,10 @@ public class EndpointController {
   }
 
   @DeleteMapping("delete/company")
-  public ResponseEntity<String> deleteCompany(@RequestParam("endpointId") Long endpointId,
-                                              @RequestParam("companyId") Long companyId) {
-    return ResponseEntity.status(HttpStatus.OK).body(endpointService.deleteEndpointCompanyById(endpointId,companyId));
+  public ResponseEntity<String> deleteCompany(
+      @RequestParam("endpointId") Long endpointId, @RequestParam("companyId") Long companyId) {
+    return ResponseEntity.status(HttpStatus.OK)
+        .body(endpointService.deleteEndpointCompanyById(endpointId, companyId));
   }
 
   @PostMapping("add-company")
