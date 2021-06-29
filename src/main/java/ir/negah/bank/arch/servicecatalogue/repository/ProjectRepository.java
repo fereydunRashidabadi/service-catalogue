@@ -1,6 +1,6 @@
-package ir.negah.bank.arch.corporate.servicecatalogue.repository;
+package ir.negah.bank.arch.servicecatalogue.repository;
 
-import ir.negah.bank.arch.corporate.servicecatalogue.domain.entity.*;
+import ir.negah.bank.arch.servicecatalogue.domain.entity.*;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.*;
 

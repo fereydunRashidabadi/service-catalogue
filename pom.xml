@@ -8,9 +8,9 @@
         <version>1.0.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <artifactId>arch-corporate-servicecatalogue</artifactId>
-    <version>0.0.1</version>
-    <name>arch-corporate-servicecatalogue</name>
+    <artifactId>arch-service-catalogue</artifactId>
+    <version>1.0.0</version>
+    <name>arch-service-catalogue</name>
     <description>The service catalogue for arch group</description>
     <dependencies>
         <dependency>

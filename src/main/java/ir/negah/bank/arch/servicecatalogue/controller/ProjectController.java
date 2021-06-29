@@ -1,7 +1,7 @@
-package ir.negah.bank.arch.corporate.servicecatalogue.controller;
+package ir.negah.bank.arch.servicecatalogue.controller;
 
-import ir.negah.bank.arch.corporate.servicecatalogue.domain.entity.*;
-import ir.negah.bank.arch.corporate.servicecatalogue.service.*;
+import ir.negah.bank.arch.servicecatalogue.domain.entity.*;
+import ir.negah.bank.arch.servicecatalogue.service.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.ui.*;

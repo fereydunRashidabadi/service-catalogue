@@ -1,4 +1,4 @@
-package ir.negah.bank.arch.corporate.servicecatalogue.controller;
+package ir.negah.bank.arch.servicecatalogue.controller;
 
 import org.springframework.stereotype.*;
 import org.springframework.ui.*;

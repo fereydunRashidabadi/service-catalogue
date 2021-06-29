@@ -1,4 +1,4 @@
-package ir.negah.bank.arch.corporate.servicecatalogue;
+package ir.negah.bank.arch.servicecatalogue;
 
 import lombok.extern.slf4j.*;
 import org.springframework.boot.autoconfigure.*;
@@ -11,7 +11,7 @@ import java.util.*;
 
 @SpringBootApplication
 @Slf4j
-public class ArchCorporateServicecatalogueApplication {
+public class ArchServicecatalogueApplication {
 
   static final Class<?> THIS = MethodHandles.lookup().lookupClass();
 

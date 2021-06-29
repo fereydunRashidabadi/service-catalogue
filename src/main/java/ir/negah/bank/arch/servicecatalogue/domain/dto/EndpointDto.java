@@ -1,4 +1,4 @@
-package ir.negah.bank.arch.corporate.servicecatalogue.domain.dto;
+package ir.negah.bank.arch.servicecatalogue.domain.dto;
 
 import lombok.*;
 

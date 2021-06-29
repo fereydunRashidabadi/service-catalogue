@@ -1,9 +1,9 @@
-package ir.negah.bank.arch.corporate.servicecatalogue.service;
+package ir.negah.bank.arch.servicecatalogue.service;
 
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.*;
-import ir.negah.bank.arch.corporate.servicecatalogue.domain.entity.*;
-import ir.negah.bank.arch.corporate.servicecatalogue.repository.*;
+import ir.negah.bank.arch.servicecatalogue.domain.entity.*;
+import ir.negah.bank.arch.servicecatalogue.repository.*;
 import lombok.extern.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
